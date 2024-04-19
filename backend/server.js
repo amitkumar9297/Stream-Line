@@ -8,6 +8,9 @@ const connectDB = require("./config/db");
 // env config
 dotenv.config();
 
+// router import
+const userRoutes = require('./routes/userRoutes');
+
 // mongodb connection
 connectDB();
 
@@ -22,6 +25,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
+
+// routes
+app.use('/api/v1/user', userRoutes);
 
 app.listen(PORT, () => {
     console.log(`server running on ${process.env.DEV_MODE} port no. ${PORT}`.bgCyan.white);
