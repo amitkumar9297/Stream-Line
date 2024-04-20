@@ -1,6 +1,8 @@
 const userModel = require('../models/userModel');
 
 const bcrypt = require("bcrypt");
+const sendMail = require('../utils/sendMail');
+const sendOTP = require('../utils/sendOTP');
 
 // create user register user
 exports.registerController = async (req, res) => {
@@ -29,6 +31,8 @@ exports.registerController = async (req, res) => {
         // save new user
         const user = new userModel({ username, email, password: hashedPassword })
         user.save();
+
+        // sendOTP(email);
 
         return res.status(201).send({
             success: true,
