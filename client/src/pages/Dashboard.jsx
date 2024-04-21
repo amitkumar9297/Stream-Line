@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import logo from '../assets/logo.jpg'
+import logo from '../assets/logo.png'
 import { MdOutlineSignalCellularAlt } from "react-icons/md";
 import DoughnutChart from '../components/DoughnutChart';
 import Map from '../components/Map';
@@ -122,14 +122,23 @@ const Dashboard = () => {
             pointHoverBorderColor: 'rgb(54, 162, 235)'
         }]
     };
+    const trending = {
+        labels: ["AI", "IPL", "hackathon", "Election", "stock", "crypto", "fashion", "vote", "farming", "farma", "furniture", "carrer", "law", "gadets"],
+        datasets: [{
+            label: `top trending`,
+            data: view,
+            borderColor: "rgb(254,152,28)",
+            backgroundColor: "rgba(255,99,132,0.5)"
+        }]
+    }
 
 
     return (
         <div style={{ width: "100vw", minHeight: "100vh", backgroundColor: "white", display: 'flex', flexDirection: 'row' }}>
-            <div style={{ width: "20vw", height: '100vh', backgroundColor: '#0F123F', borderTopRightRadius: "2rem", borderBottomRightRadius: "2rem", display: 'flex', flexDirection: 'column', alignItem: 'center' }}>
+            <div style={{ width: "20vw", minHeight: '100vh', backgroundColor: '#0F123F', borderTopRightRadius: "2rem", borderBottomRightRadius: "2rem", display: 'flex', flexDirection: 'column', alignItem: 'center' }}>
                 <div style={{ display: 'flex', flexDirection: "row", padding: '3rem' }}>
-                    <img src={logo} alt='logo' style={{ height: '2rem', width: '2rem', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
-                    <p style={{ fontSize: '1.5rem', color: "white" }}>Streamline</p>
+                    <img src={logo} alt='logo' style={{ height: '5rem', width: '10rem', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+                    {/* <p style={{ fontSize: '1.5rem', color: "white" }}>Streamline</p> */}
                 </div>
                 <div style={{ paddingLeft: '3rem', paddingBottom: '1rem' }}>
                     <p style={{ fontSize: '1.5rem', color: "white" }}>Instagram</p>
@@ -202,6 +211,14 @@ const Dashboard = () => {
                 {/* <div style={{ width: '80vw' }}>
                     <Map coordinates={coordinates} />
                 </div> */}
+                <div style={{ width: '79vw', height: '40vh', boxShadow: '0 4px 10px #D9D9D9', borderRadius: '1.5rem' }}>
+                    <Line
+                        options={{
+                            responsive: true
+                        }}
+                        data={trending}
+                    />
+                </div>
             </div>
         </div >
     )
