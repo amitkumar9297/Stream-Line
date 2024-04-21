@@ -10,6 +10,7 @@ dotenv.config();
 
 // router import
 const userRoutes = require('./routes/userRoutes');
+const postRoutes = require('./routes/postRoutes');
 
 // mongodb connection
 connectDB();
@@ -28,6 +29,8 @@ app.use(morgan('dev'));
 
 // routes
 app.use('/api/v1/user', userRoutes);
+app.use('/api/v1/post', postRoutes);
+
 
 app.listen(PORT, () => {
     console.log(`server running on ${process.env.DEV_MODE} port no. ${PORT}`.bgCyan.white);

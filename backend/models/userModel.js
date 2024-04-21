@@ -40,6 +40,18 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "please enter the password"]
     },
+    followers: [{
+        type: mongoose.Types.ObjectId,
+        ref: "User"
+    }],
+    origin: {
+        type: String,
+        trim: [true, "please enter your e-mail"],
+    },
+    post: [[{
+        type: mongoose.Types.ObjectId,
+        ref: "Post"
+    }]],
     otpCode: { type: Number },
     verify: { type: Boolean, default: false },
     jorner: { type: String, trim: true },
